@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ventas - Dulcería Elegante</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Dulcería Elegante - Panel</h1>
+      <nav>
+        <ul>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="ventas.html" class="active">Ventas</a></li>
+          <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="section-box">
+      <h2>Pedidos Registrados</h2>
+      <div id="listaPedidos"></div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Dulcería Elegante. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const listaPedidos = document.getElementById('listaPedidos');
+    const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+
+    if (pedidos.length === 0) {
+      listaPedidos.innerHTML = "<p>No hay pedidos registrados aún.</p>";
+    } else {
+      pedidos.forEach((pedido, index) => {
+        const div = document.createElement('div');
+        div.classList.add('section-box');
+
+        let html = `<h3>Pedido #${index + 1} - ${pedido.fecha}</h3>`;
+        html += `<ul>`;
+        pedido.productos.forEach(p => {
+          html += `<li>${p.cantidad} x ${p.nombre} - $${p.precio * p.cantidad} MXN</li>`;
+        });
+        html += `</ul>`;
+        html += `<p><strong>Total:</strong> $${pedido.total} MXN</p>`;
+
+        div.innerHTML = html;
+        listaPedidos.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

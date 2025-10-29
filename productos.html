@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dulcería - Productos</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Dulcería Elegante - Productos</h1>
+      <nav>
+        <ul>
+          <li><a href="productos.html" class="active">Productos</a></li>
+          <li><a href="ventas.html">Ventas</a></li>
+          <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Formulario para agregar producto -->
+    <section class="section-box">
+      <h2>Agregar Nuevo Producto</h2>
+      <form id="formAgregarProducto">
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" required />
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" required />
+
+        <label for="precio">Precio (MXN):</label>
+        <input type="number" id="precio" min="1" required />
+
+        <label for="imagen">URL de la imagen:</label>
+        <input type="text" id="imagen" required />
+
+        <button type="submit">Agregar Producto</button>
+      </form>
+    </section>
+
+    <!-- Mostrar productos -->
+    <section class="section-box">
+      <h2>Listado de Productos</h2>
+      <div class="productos-grid" id="productosGrid"></div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Dulcería Elegante. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    const productosGrid = document.getElementById('productosGrid');
+    const form = document.getElementById('formAgregarProducto');
+
+    // Productos iniciales
+    const productosIniciales = [
+      {
+        nombre: 'Caramelos Premium',
+        descripcion: 'Deliciosos caramelos artesanales.',
+        precio: 15,
+        imagen: 'img/images.jfif'
+      },
+      {
+        nombre: 'Chocolates Premium',
+        descripcion: 'Chocolate oscuro de alta calidad.',
+        precio: 30,
+        imagen: 'img/cocholates.jpg'
+      },
+      {
+        nombre: 'Galletas Gourmet',
+        descripcion: 'Galletas recién horneadas con sabor único.',
+        precio: 25,
+        imagen: 'img/gatellas.jfif'
+      }
+    ];
+
+    // Cargar productos desde localStorage o usar los iniciales
+    let productos = JSON.parse(localStorage.getItem('productos')) || productosIniciales;
+
+    function guardarProductos() {
+      localStorage.setItem('productos', JSON.stringify(productos));
+    }
+
+    function mostrarProductos() {
+      productosGrid.innerHTML = '';
+      productos.forEach(p => {
+        const div = document.createElement('div');
+        div.classList.add('producto');
+        div.innerHTML = `
+          <img src="${p.imagen}" alt="${p.nombre}" />
+          <h3>${p.nombre}</h3>
+          <p>${p.descripcion}</p>
+          <span class="price">$${p.precio.toFixed(2)}</span>
+        `;
+        productosGrid.appendChild(div);
+      });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nuevoProducto = {
+        nombre: document.getElementById('nombre').value,
+        descripcion: document.getElementById('descripcion').value,
+        precio: parseFloat(document.getElementById('precio').value),
+        imagen: document.getElementById('imagen').value
+      };
+      productos.push(nuevoProducto);
+      guardarProductos();
+      mostrarProductos();
+      form.reset();
+    });
+
+    mostrarProductos();
+  </script>
+</body>
+</html>

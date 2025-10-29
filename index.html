@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio de Sesión - Dulcería</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    .info-credenciales {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #555;
+      background-color: #fff3c6;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .info-credenciales strong {
+      color: #a67400;
+    }
+  </style>
+</head>
+<body>
+  <div class="container login-container">
+    <header>
+      <h1>Iniciar Sesión</h1>
+    </header>
+
+    <form id="loginForm">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Escribe tu usuario" required />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" placeholder="Escribe tu contraseña" required />
+
+      <button type="submit">Entrar</button>
+      <p id="mensaje" class="message"></p>
+    </form>
+
+    <!-- 🔐 Info de acceso -->
+    <div class="info-credenciales">
+      <p><strong>Usuarios de prueba:</strong></p>
+      <ul>
+        <li><strong>Admin</strong> — Usuario: <code>admin</code> | Contraseña: <code>admin123</code></li>
+        <li><strong>Usuario</strong> — Usuario: <code>usuario</code> | Contraseña: <code>user123</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Usuarios con contraseña hardcodeada para demo:
+      const usuariosValidos = {
+        'admin': 'admin123',    // contraseña para admin
+        'usuario': 'user123'    // contraseña para usuario normal
+      };
+
+      if (!usuariosValidos[usuario]) {
+        mostrarMensaje('Usuario no reconocido', true);
+        return;
+      }
+
+      if (usuariosValidos[usuario] === password) {
+        // Redirigir según usuario
+        if (usuario === 'admin') {
+          window.location.href = 'admin.html';
+        } else if (usuario === 'usuario') {
+          window.location.href = 'usuario.html';
+        }
+      } else {
+        mostrarMensaje('Contraseña incorrecta', true);
+      }
+    });
+
+    function mostrarMensaje(msg, error = false) {
+      const mensajeEl = document.getElementById('mensaje');
+      mensajeEl.textContent = msg;
+      mensajeEl.style.color = error ? '#f44336' : '#4caf50'; // rojo o verde
+    }
+  </script>
+</body>
+</html>

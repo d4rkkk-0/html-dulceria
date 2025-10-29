@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+
+body {
+  background: linear-gradient(135deg, #fceabb, #f8b500);
+  font-family: 'Roboto', sans-serif;
+  color: #3e2f1c;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background: #fff8e1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-radius: 12px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #6b3e00;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #a67400;
+  font-weight: 700;
+  font-size: 1.1em;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  padding-bottom: 4px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  border-color: #d9a500;
+  color: #d9a500;
+}
+
+.section-box {
+  background: #fff3c6;
+  padding: 20px 30px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(217, 165, 0, 0.3);
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: #7a4c00;
+  border-bottom: 2px solid #d9a500;
+  padding-bottom: 6px;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+form input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 2px solid #d9a500;
+  border-radius: 8px;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #a67400;
+  outline: none;
+}
+
+button {
+  background: #a67400;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(166, 116, 0, 0.5);
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #d9a500;
+  color: #3e2f1c;
+}
+
+.message {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.productos-grid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.producto {
+  background: #fff7dc;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(166, 116, 0, 0.3);
+  width: 280px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-10px);
+}
+
+.producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 10px rgba(217, 165, 0, 0.3);
+}
+
+.producto h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #7a4c00;
+}
+
+.producto p {
+  font-size: 1em;
+  color: #5c4310;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #a67400;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+thead tr {
+  background: #d9a500;
+  color: #3e2f1c;
+  font-weight: 700;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #a67400;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background: #fff3c6;
+}
+
+tbody tr:hover {
+  background: #f7e7a1;
+}
+
+footer {
+  text-align: center;
+  padding: 15px 0;
+  font-style: italic;
+  color: #7a4c00;
+  border-top: 1px solid #a67400;
+  margin-top: 40px;
+}
+
+/* Extra para centrar y dar espacio en login */
+
+.login-container {
+  max-width: 400px;
+  margin-top: 80px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(166,116,0,0.4);
+  border-radius: 15px;
+}
